@@ -34,7 +34,9 @@ pytest
 pytest --cov
 ```
 ## Документация:
-
+```
+pytest --cov=src --cov-report=html
+```
 
 
 ## Лицензия:
