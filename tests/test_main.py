@@ -1,4 +1,4 @@
-
+from src.main import Category, Product
 
 def test_main_product(first_product):
     assert first_product.name == "Samsung Galaxy S23 Ultra"
@@ -30,3 +30,29 @@ def test_main_first_category(first_category, second_category):
     assert first_category.product_count == 4
 
     assert second_category.product_count == 4
+
+# def test_main_new_product(new_product, first_product):
+#     """Тест создания нового продукта"""
+#     new_product = first_product.new_product(new_product)
+#
+#     assert new_product.name == new_product["name"]
+#     assert new_product.description == new_product["description"]
+#     assert new_product.price == new_product["price"]
+#     assert new_product.quantity == new_product["quantity"]
+
+def test_main_getter_price(first_product):
+    assert first_product.price == 180000.0
+
+# def test_main_setter_price(first_product, new_product):
+#     assert first_product
+
+def test_main_add_product(first_category, first_product):
+    length_of_categories = len(first_category.products)
+    counter = Category.product_count
+
+    first_category.add_product(first_product)
+
+    assert len(first_category.products) == length_of_categories + 1
+    assert Category.product_count == counter + 1
+
+
