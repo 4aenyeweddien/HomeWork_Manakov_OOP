@@ -12,6 +12,7 @@ class Product:
 
     @classmethod
     def new_product(cls, product_data: dict, existing_products: list["Product"] = None):
+        """Метод добавляющий новый продукт или обновляющий уже существующий"""
         if existing_products:
             for existing_product in existing_products:
                 if product_data["name"] == existing_product.name:

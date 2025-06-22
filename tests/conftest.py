@@ -46,12 +46,12 @@ def new_product():
     }
 
 @pytest.fixture
-def existing_product():
+def old_product():
     return Product(
         name="Samsung Galaxy S23 Ultra",
-        description="Старое описание",
+        description="256GB, Серый цвет, 200MP камера",
         price=170000.0,
-        quantity=3
+        quantity=5
     )
 
 @pytest.fixture
