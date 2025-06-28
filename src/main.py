@@ -131,4 +131,4 @@ class CategoryIterator:
 #     iterator = CategoryIterator(category1)
 #
 #     for product in iterator:
-#         print(type(product))
+#         print(product)
