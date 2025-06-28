@@ -1,5 +1,6 @@
 from src.main import Category, Product
 from unittest.mock import patch
+import pytest
 
 def test_main_product(first_product):
     assert first_product.name == "Samsung Galaxy S23 Ultra"
@@ -107,5 +108,7 @@ def test_lower_price_with_invalid_input(first_product, capsys):
         captured = capsys.readouterr()
         assert "Ошибка ввода. Введите y/n" in captured.out
         assert first_product.price == 150000.0  # В итоге цена изменилась
+
+
 
 
