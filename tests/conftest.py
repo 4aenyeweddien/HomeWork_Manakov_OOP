@@ -1,5 +1,4 @@
 import pytest
-import json
 from src.main import Category, CategoryIterator, LawnGrass, Product, Smartphone
 
 
