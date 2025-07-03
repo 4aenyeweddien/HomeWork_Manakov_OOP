@@ -1,6 +1,7 @@
 import pytest
 
 from src.main import Category, Product
+from src.main import CategoryIterator
 
 
 @pytest.fixture
@@ -57,3 +58,7 @@ def old_product():
 @pytest.fixture
 def existing_products_list(existing_product):
     return [existing_product]
+
+@pytest.fixture
+def category_iterator(first_category):
+    return CategoryIterator(first_category)
