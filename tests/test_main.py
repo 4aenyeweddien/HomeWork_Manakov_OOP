@@ -42,6 +42,7 @@ def test_main_getter_price(first_product):
 
 
 def test_main_add_product(first_category, first_product):
+    """Добавление продукта в категорию"""
     length_of_categories = len(first_category.products)
     counter = Category.product_count
 
@@ -81,24 +82,22 @@ def test_set_zero_or_negative_price(first_product, capsys):
     """При нулевой/отрицательной цене должно выводиться предупреждение, а цена не меняться"""
     original_price = first_product.price
 
-    # Пробуем установить нулевую цену
     first_product.price = 0
     captured = capsys.readouterr()
     assert "Цена не должна быть нулевая или отрицательная" in captured.out
-    assert first_product.price == original_price  # Цена не изменилась
+    assert first_product.price == original_price
 
-    # Пробуем установить отрицательную цену
     first_product.price = -1000
     captured = capsys.readouterr()
     assert "Цена не должна быть нулевая или отрицательная" in captured.out
-    assert first_product.price == original_price  # Цена не изменилась
+    assert first_product.price == original_price
 
 
 def test_lower_price_with_confirmation(first_product):
     """При понижении цены должно запрашиваться подтверждение (ввод 'y')"""
-    with patch("builtins.input", return_value="y"):  # Мокаем ввод пользователя
-        first_product.price = 150000.0  # Новая цена ниже исходной
-        assert first_product.price == 150000.0  # Цена изменилась
+    with patch("builtins.input", return_value="y"):
+        first_product.price = 150000.0
+        assert first_product.price == 150000.0
 
 
 def test_lower_price_with_rejection(first_product):
@@ -111,24 +110,25 @@ def test_lower_price_with_rejection(first_product):
 
 def test_lower_price_with_invalid_input(first_product, capsys):
     """При некорректном вводе (не 'y'/'n') должно повторяться подтверждение"""
-    # Эмулируем последовательность: 'invalid' -> 'y' (подтверждаем)
     with patch("builtins.input", side_effect=["invalid", "y"]):
         first_product.price = 150000.0
         captured = capsys.readouterr()
         assert "Ошибка ввода. Введите y/n" in captured.out
-        assert first_product.price == 150000.0  # В итоге цена изменилась
+        assert first_product.price == 150000.0
 
 
 def test_product_str(first_product):
-    """Возврат строкового результата от метода str"""
+    """Возврат строкового результата от метода str в продукте"""
     assert str(first_product) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
 
 
 def test_category_str(first_category):
+    """Возврат строкового результата от метода str в category"""
     assert str(first_category) == "Смартфоны, количество продуктов: 27 шт."
 
 
 def test_product_add(first_product, second_product):
+    """Проверка сложения двух продуктов"""
     assert first_product + second_product == 2580000.0
 
 
@@ -175,3 +175,8 @@ def test_product_add_error(smartphone1, lawngrass1):
     """Вызов ошибки при сложении продуктов из разных классов"""
     with pytest.raises(TypeError):
         result = smartphone1 + lawngrass1
+
+def test_product_add2(smartphone1, smartphone2, lawngrass1, lawngrass2):
+    """Проверка сложения двух продуктов"""
+    assert smartphone1 + smartphone2 == 2580000.0
+    assert lawngrass1 + lawngrass2 == 16750.0
