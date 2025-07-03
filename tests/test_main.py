@@ -110,6 +110,7 @@ def test_lower_price_with_invalid_input(first_product, capsys):
         assert first_product.price == 150000.0  # В итоге цена изменилась
 
 def test_product_str(first_product):
+    """Возврат строкового результата от метода str"""
     assert str(first_product) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
 
 def test_category_str(first_category):
@@ -128,6 +129,7 @@ def test_category_iterator(category_iterator):
         next(category_iterator)
 
 def test_smartphone_init(smartphone1):
+    """Инициализация класса наследника смартфоны"""
     assert smartphone1.name == "Samsung Galaxy S23 Ultra"
     assert smartphone1.description == "256GB, Серый цвет, 200MP камера"
     assert smartphone1.price == 180000.0
@@ -138,6 +140,7 @@ def test_smartphone_init(smartphone1):
     assert smartphone1.color == "Серый"
 
 def test_lawngrass_init(lawngrass1):
+    """Инициализация класса наследника газонная трава"""
     assert lawngrass1.name == "Газонная трава"
     assert lawngrass1.description == "Элитная трава для газона"
     assert lawngrass1.price == 500.0
@@ -146,10 +149,13 @@ def test_lawngrass_init(lawngrass1):
     assert lawngrass1.germination_period == "7 дней"
     assert lawngrass1.color == "Зеленый"
 
-def test_category_add_error(task_periodic1, task_periodic2):
+def test_category_add_product_error(first_category):
+    """Вызов ошибки при добавлении объекта не являющимся продуктом"""
     with pytest.raises(TypeError):
-        result = task_periodic1 + 1
+        first_category.add_product("Not a product")
 
-def test_category_add_error(task_periodic1, task_periodic2):
+
+def test_product_add_error(smartphone1, lawngrass1):
+    """Вызов ошибки при сложении продуктов из разных классов"""
     with pytest.raises(TypeError):
-        result = task_periodic1 + 1
+        result = smartphone1 + lawngrass1
