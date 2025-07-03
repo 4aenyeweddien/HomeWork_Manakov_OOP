@@ -27,10 +27,12 @@ class Product:
                     existing_product.quantity += product_data["quantity"]
                     existing_product.price = max(existing_product.price, product_data["price"])
                     return existing_product
-        return cls(name = product_data["name"],
-                    description = product_data["description"],
-                    price = product_data["price"],
-                    quantity = product_data["quantity"])
+        return cls(
+            name=product_data["name"],
+            description=product_data["description"],
+            price=product_data["price"],
+            quantity=product_data["quantity"],
+        )
 
     @property
     def price(self):
@@ -83,13 +85,13 @@ class Category:
         self.__products.append(product)
         Category.product_count += 1
 
-
     @property
     def products(self):
         product_list = []
         for product in self.__products:
             product_list.append(f"{str(product)}")
         return product_list
+
 
 class CategoryIterator:
     def __init__(self, category_obj):
@@ -109,14 +111,16 @@ class CategoryIterator:
         else:
             raise StopIteration
 
+
 class Smartphone(Product):
     """Класс категории смартфоны наследуемый от Product"""
+
     efficiency: float
     model: str
     memory: int
     color: str
 
-    def __init__(self,name: str, description: str, price: float, quantity: int,  efficiency, model, memory, color):
+    def __init__(self, name: str, description: str, price: float, quantity: int, efficiency, model, memory, color):
         """Инициализация класса"""
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
@@ -124,19 +128,28 @@ class Smartphone(Product):
         self.memory = memory
         self.color = color
 
+
 class LawnGrass(Product):
     """Класс категории газонная трава наследуемый от Product"""
+
     country: str
     germination_period: str
     color: str
 
-    def __init__(self, name: str, description: str, price: float, quantity: int, country:str, germination_period:str, color:str):
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        country: str,
+        germination_period: str,
+        color: str,
+    ):
         super().__init__(name, description, price, quantity)
         self.country = country
         self.germination_period = germination_period
         self.color = color
-
-
 
 
 # if __name__ == '__main__':
