@@ -127,4 +127,29 @@ def test_category_iterator(category_iterator):
     with pytest.raises(StopIteration):
         next(category_iterator)
 
+def test_smartphone_init(smartphone1):
+    assert smartphone1.name == "Samsung Galaxy S23 Ultra"
+    assert smartphone1.description == "256GB, Серый цвет, 200MP камера"
+    assert smartphone1.price == 180000.0
+    assert smartphone1.quantity == 5
+    assert smartphone1.efficiency == 95.5
+    assert smartphone1.model == "S23 Ultra"
+    assert smartphone1.memory == 256
+    assert smartphone1.color == "Серый"
 
+def test_lawngrass_init(lawngrass1):
+    assert lawngrass1.name == "Газонная трава"
+    assert lawngrass1.description == "Элитная трава для газона"
+    assert lawngrass1.price == 500.0
+    assert lawngrass1.quantity == 20
+    assert lawngrass1.country == "Россия"
+    assert lawngrass1.germination_period == "7 дней"
+    assert lawngrass1.color == "Зеленый"
+
+def test_category_add_error(task_periodic1, task_periodic2):
+    with pytest.raises(TypeError):
+        result = task_periodic1 + 1
+
+def test_category_add_error(task_periodic1, task_periodic2):
+    with pytest.raises(TypeError):
+        result = task_periodic1 + 1
