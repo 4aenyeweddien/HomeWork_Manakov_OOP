@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class BaseProduct(ABC):
     """Абстрактный класс"""
 
@@ -16,6 +17,7 @@ class BaseProduct(ABC):
     def new_product(cls, *args, **kwargs):
         pass
 
+
 class BaseCategoryOrder(ABC):
     """Абстрактный базовый класс для Category и Order"""
 
@@ -23,8 +25,10 @@ class BaseCategoryOrder(ABC):
     def __str__(self):
         pass
 
+
 class PrintMixin:
     """Класс-миксин для печати в консоль информации"""
+
     def __init__(self):
         print(repr(self))
 
@@ -32,9 +36,9 @@ class PrintMixin:
         return f"{self.__class__.__name__}({self.name},{self.description},{self.price},{self.quantity})"
 
 
-
 class Product(BaseProduct, PrintMixin):
     """Класс прокудтов"""
+
     name: str
     description: str
     price: float
@@ -173,8 +177,16 @@ class LawnGrass(Product):
     germination_period: str
     color: str
 
-    def __init__(self, name: str, description: str, price: float, quantity: int, country: str, germination_period: str,
-                color: str):
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        country: str,
+        germination_period: str,
+        color: str,
+    ):
         super().__init__(name, description, price, quantity)
         self.country = country
         self.germination_period = germination_period

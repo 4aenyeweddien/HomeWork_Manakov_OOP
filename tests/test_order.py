@@ -1,6 +1,8 @@
 from src.main import Order
 
+
 def test_main_order(first_product):
+    """Тестирование класса order"""
     order = Order(first_product, 3)
     assert order.product == first_product
     assert order.quantity == 3

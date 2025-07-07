@@ -176,6 +176,7 @@ def test_product_add_error(smartphone1, lawngrass1):
     with pytest.raises(TypeError):
         result = smartphone1 + lawngrass1
 
+
 def test_product_add2(smartphone1, smartphone2, lawngrass1, lawngrass2):
     """Проверка сложения двух продуктов"""
     assert smartphone1 + smartphone2 == 2580000.0
