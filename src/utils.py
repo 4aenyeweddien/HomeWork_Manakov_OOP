@@ -1,17 +1,21 @@
 import json
 import os
+from typing import Any
 
 from src.main import Category, Product
 
 
-def read_json(path: str) -> dict:
+def read_json(path: str) -> Any:
+    """Читает Json файл и возвращает словарь"""
+
     full_path = os.path.abspath(path)
     with open(full_path, "r", encoding="UTF-8") as file:
         data = json.load(file)
     return data
 
 
-def create_objects_from_json(data):
+def create_objects_from_json(data: list[dict]) -> list:
+    """Создает объекты из полученных данных Json файла"""
     categories = []
     for category in data:
         products = []

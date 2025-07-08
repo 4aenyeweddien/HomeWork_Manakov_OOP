@@ -6,6 +6,7 @@ from src.main import Category, Product
 
 
 def test_main_product(first_product):
+    """Тест инициализации первого продукта"""
     assert first_product.name == "Samsung Galaxy S23 Ultra"
     assert first_product.description == "256GB, Серый цвет, 200MP камера"
     assert first_product.price == 180000.0
@@ -13,6 +14,7 @@ def test_main_product(first_product):
 
 
 def test_main_second_product(second_product):
+    """Тест инициализации второго продукта"""
     assert second_product.name == "Iphone 15"
     assert second_product.description == "512GB, Gray space"
     assert second_product.price == 210000.0
@@ -20,12 +22,13 @@ def test_main_second_product(second_product):
 
 
 def test_main_first_category(first_category, second_category):
+    """Тест инициализации категорий"""
     assert first_category.name == "Смартфоны"
     assert (
         first_category.description
         == "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни"
     )
-
+    assert second_category.name == "Телевизоры"
     assert len(first_category.products) == 3
 
     assert first_category.category_count == 2
@@ -38,6 +41,7 @@ def test_main_first_category(first_category, second_category):
 
 
 def test_main_getter_price(first_product):
+    """Тест геттера возвращаюшего стоимость продукта"""
     assert first_product.price == 180000.0
 
 
@@ -133,6 +137,7 @@ def test_product_add(first_product, second_product):
 
 
 def test_category_iterator(category_iterator):
+    """тест итератор по категории"""
     iter(category_iterator)
     assert category_iterator.index == 0
     assert next(category_iterator).name == "Samsung Galaxy S23 Ultra"
