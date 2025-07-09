@@ -4,6 +4,7 @@ import pytest
 
 from src.main import Product
 
+
 def test_product(first_product):
     """Тест инициализации первого продукта"""
     assert first_product.name == "Samsung Galaxy S23 Ultra"
@@ -43,6 +44,7 @@ def test_new_product_update(new_product):
     assert updated.quantity == 10
     assert updated.price == 180000.0
     assert updated.description == "256GB, Серый цвет, 200MP камера"
+
 
 def test_set_higher_price(first_product):
     """Цена должна обновиться без подтверждения, если новая цена выше"""
@@ -93,6 +95,13 @@ def test_product_str(first_product):
     """Возврат строкового результата от метода str в продукте"""
     assert str(first_product) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
 
+
 def test_product_add(first_product, second_product):
     """Проверка сложения двух продуктов"""
     assert first_product + second_product == 2580000.0
+
+
+def test_product_add2(smartphone1, smartphone2, lawngrass1, lawngrass2):
+    """Проверка сложения двух продуктов"""
+    assert smartphone1 + smartphone2 == 2580000.0
+    assert lawngrass1 + lawngrass2 == 16750.0
