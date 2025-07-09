@@ -105,3 +105,9 @@ def test_product_add2(smartphone1, smartphone2, lawngrass1, lawngrass2):
     """Проверка сложения двух продуктов"""
     assert smartphone1 + smartphone2 == 2580000.0
     assert lawngrass1 + lawngrass2 == 16750.0
+
+
+def test_product_add_error(smartphone1, lawngrass1):
+    """Вызов ошибки при сложении продуктов из разных классов"""
+    with pytest.raises(TypeError):
+        result = smartphone1 + lawngrass1

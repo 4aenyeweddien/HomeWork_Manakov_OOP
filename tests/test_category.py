@@ -1,4 +1,5 @@
 from src.category import Category
+import pytest
 
 def test_main_first_category(first_category, second_category):
     """Тест инициализации категорий"""
@@ -33,3 +34,8 @@ def test_main_add_product(first_category, first_product):
 def test_category_str(first_category):
     """Возврат строкового результата от метода str в category"""
     assert str(first_category) == "Смартфоны, количество продуктов: 27 шт."
+
+def test_category_add_product_error(first_category):
+    """Вызов ошибки при добавлении объекта не являющимся продуктом"""
+    with pytest.raises(TypeError):
+        first_category.add_product("Not a product")
