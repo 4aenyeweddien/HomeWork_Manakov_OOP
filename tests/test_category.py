@@ -39,3 +39,8 @@ def test_category_add_product_error(first_category):
     """Вызов ошибки при добавлении объекта не являющимся продуктом"""
     with pytest.raises(TypeError):
         first_category.add_product("Not a product")
+
+def test_middle_price(first_category, category_empty_products):
+    """Тест подсчета среднего ценника"""
+    assert first_category.middle_price() == 140333.33
+    assert category_empty_products.middle_price() == 0
