@@ -1,6 +1,8 @@
-import os
 import json
+import os
+
 import pytest
+
 from src.utils import read_json
 
 
@@ -20,7 +22,7 @@ def test_read_json(temp_json_file):
 
 
 def test_read_json_nonexistent_file():
-    """ Проверка поведения с несуществующим файлом"""
+    """Проверка поведения с несуществующим файлом"""
     non_existent_file = "non_existent_file.json"
     with pytest.raises(FileNotFoundError):
         read_json(non_existent_file)
@@ -33,4 +35,3 @@ def test_read_json_invalid_json(tmpdir):
 
     with pytest.raises(json.JSONDecodeError):
         read_json(str(invalid_json_file))
-
