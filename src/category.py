@@ -42,3 +42,9 @@ class Category(BaseCategoryOrder):
         for product in self.__products:
             product_list.append(f"{str(product)}")
         return product_list
+
+    def middle_price(self):
+        try:
+            return round(sum([product.price for product in self.__products]) / len(self.__products), 2)
+        except ZeroDivisionError:
+            return 0
