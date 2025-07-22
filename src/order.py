@@ -1,5 +1,6 @@
 from src.base_category_order import BaseCategoryOrder
 from src.product import Product
+from src.exceptions import ZeroQuantityProduct
 
 class Order(BaseCategoryOrder):
     """Класс заказа одного товара"""
@@ -8,7 +9,17 @@ class Order(BaseCategoryOrder):
         """Инициализация класса заказа"""
 
         self.product = product
-        self.quantity = quantity
+        try:
+            if quantity == 0:
+                raise ZeroQuantityProduct("Нельзя добавлять товар с нулевым количеством")
+        except ZeroQuantityProduct as e:
+            print(str(e))
+        else:
+            self.quantity = quantity
+            print("Товар успешно добавлен в заказ")
+        finally:
+            print("Обработка добавления товара завершена")
+
 
     @property
     def total_price(self) -> float:

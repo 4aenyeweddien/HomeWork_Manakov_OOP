@@ -111,3 +111,12 @@ def test_product_add_error(smartphone1, lawngrass1):
     """Вызов ошибки при сложении продуктов из разных классов"""
     with pytest.raises(TypeError):
         result = smartphone1 + lawngrass1
+
+def test_product_zero_quantity():
+    """Инициализация класса Product с нулевым количеством """
+    with pytest.raises(ValueError) as info:
+        Product(
+            name="Samsung Galaxy S23 Ultra", description="256GB, Серый цвет, 200MP камера", price=180000.0, quantity=0)
+
+
+    assert str(info.value) == "Товар с нулевым количеством не может быть добавлен"
